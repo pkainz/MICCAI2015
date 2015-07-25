@@ -13,6 +13,8 @@ P. Kainz, M. Urschler, S. Schulter, P. Wohlhart, and V. Lepetit. **You should us
 }
 ```
 
+Watch the short video on [YouTube](https://www.youtube.com/watch?v=4FhdkiZ51Js)!
+
 ### Conditions of use
 You are welcome to you use the bone marrow dataset in your work, but please make sure to include our paper in your citations.
 
