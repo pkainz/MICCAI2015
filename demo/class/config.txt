@@ -1,0 +1,167 @@
+General:
+{
+  // Forest method: 0 = Standard RandomForest
+  method = 0;
+
+  // mode: 0=train, 1=predict test images, 2=train&detect test images, 3=analyze leaf nodes, 4=analyze split nodes
+  // 5 = leave-one-out cross validation on train-images
+  // mode defines, which parts of the algorithm will be run
+  // since we need the full detection accuracy on the test images,
+  // we have to run train&detect and evaluate the test images
+  mode = 2;
+
+  // quiet mode (no outputs)
+  quiet = 0;
+
+  // debug output on/off
+  debug_on = 0;
+
+  // output file (results, etc. ...)
+  path_output = "out.txt";
+};
+
+
+
+Forest:
+{
+  // number of trees
+  num_trees = 64;
+
+  // maximum tree depth
+  max_tree_depth = 16;
+
+  // minimum samples for further splitting
+  min_split_samples = 50;
+
+  // number of node tests (only the number of randomly drawn split functions)
+  // set x = 0 -> x = sqrt(#features) split functions tested, or set x > 0 -> x split functions tested
+  num_node_tests = 1000;
+
+  // number of thresholds tested for each randomly drawn split function (<num_node_tests>)
+  // This results in <num_node_tests> * <num_node_thresholds> splits tested per node!
+  num_node_thresholds = 20;
+
+  // number of random samples used for optimizing a single node in the trees
+  // set to x = 0 if all samples should be used per node
+  // set to x > 0 if x samples should be used per node (this is of course always the min of x and 
+  // the actual number of samples available per node)
+  num_random_samples_for_splitting = 200;
+
+  // type of bagging used: 0=none (all samples are used for each tree), 1=subsample with replacement
+  bagging_type = 0;
+
+  // refine the trees with the out-of-bag samples (out-of-bag samples are only 
+  // available for a corresponding <bagging_type> (subsample with replacement)
+  do_tree_refinement = 1;
+
+  // type of split function: 
+  //PIXELPAIRTEST = 3, (standard pixel-difference)
+  //HAAR_LIKE = 4, (equals average-diff of two regions)
+  //PIXELPAIRTESTCONDITIONED = 5, (fix first pixel at random and choose a second one within 10 px) 
+  //SINGLEPIXELTEST = 6,
+  splitfunction_type = 3;
+  splitfunction_type_list = [3,4,5,6];
+
+  // a flag whether to use random split function out of the list. (0 = choose the first available, 1 = randomly select the function)
+  // if this flag is true (1), <splitfunction_type_list> must exist and contain at least one valid split function type index
+  // if this is set to false (0), <splitfunction_type> must be set to a valid function type index and <splitfunction_type_list> is ignored
+  use_random_split_function = 1;
+
+  // number of features used for evaluating the ordinal split (for the case of <splitfunction_type>=2, i.e., the ordinal split function
+  ordinal_split_k = 4;
+
+  // which channels (channel-combination) should be used
+  // 0 = same-channel, 1 = random-channel, 2 = 50/50 chance of same-channel or random-channel
+  split_channel_selection = 2;
+
+  // list of features available to the split function, order is not important
+  // FC_GRAY     0 // simple grey-value image (mean of color channels), 1 feature plane
+  // FC_GABOR    1 // gabor filters, ? feature plane
+  // FC_SOBEL    2 // first derivatives, 2 feature planes (x,y)
+  // FC_MIN_MAX  3 // minimum/maximum filters, 2 feature planes (min, max)
+  // FC_CANNY    4 // canny edges (binary), 1 feature plane
+  // FC_NORM     5 // histogram-equalized gray scale image, 1 feature plane
+  // FC_LAB	 6 // CIELAB channels, 3 feature planes (L,a,b)
+  // FC_GRAD2	 7 // second derivatives, 2 feature planes (x, y)
+  // FC_HOG      8 // HoG, 9 feature planes (bins)
+  // FC_LUV      9 // CIELUV channels, 3 feature planes (L,u,v)
+  // FC_ORIENTED_GRAD_CHANFTRS 10 // Binned Oriented Gradients - Channel Features (Dollar, Benenson, ...), 6 feature planes (bins)
+  // FC_GRADMAGN 11 // gradient magnitudes, 1 feature plane
+  // FC_RGB      12 // RGB channels, 3 feature planes (R,G,B)
+  // FC_RELLOC   13 // relative lo1cation, 2 feature planes (x,y)
+  image_feature_list = [12,11,9,7,2,8,5];
+
+  // use min/max filters 
+  // doubles the #feature_planes by filtering each with a min and a max filter
+  use_min_max_filters = 0;
+
+  // split evaluation type for classification: 
+  // 0 = entropy, 1 = Gini, 2 = use the loss specified in <global_loss_classification>
+  splitevaluation_type_classification = 1;
+
+ // (sliding) Window Settings
+ // ##################################################################################################
+  // size of the training patch (height, width)
+  // this size determines the window size
+  patch_size = [50, 50];
+
+  // flag whether to extend the border, if <extend_border> = 1, then the border will be extended by <patch_size>/2 on each 
+  // edge of the image using <border_type>
+  extend_border = 1;
+
+  // cv::BORDER_REPLICATE = 0,
+  // cv::BORDER_CONSTANT=1, (extends with constant black border)
+  // cv::BORDER_REFLECT=2, 
+  // cv::BORDER_WRAP=3,
+  // cv::BORDER_REFLECT_101 = 4
+  border_type = 4;
+};
+
+
+
+Data:
+{
+  // a general scaling factor for all input images! If not specified, this is set to 1.0 (default value)
+  general_scaling_factor = 1.0;
+
+  // ######################################################################
+  // FOREST-RELEVANT PATHS: output paths (trees, prediction and detection images, ...)
+  // ######################################################################
+  path_trees = "./bindata/trees/";
+  // flag to store the predection images to their directory (0 = false, 1 = true)
+  store_predictionimages = 1;
+  predictionimgpath = "./bindata/predictions/"; // prediction storage (pure DT predictions, no postprocessing)
+
+  // paths to leave-one-out cross validation data
+  use_unique_loocv_path = 0;
+  path_loocv = "./bindata/";
+  loocv_path_predictions_prefix = "predictions";
+  loocv_path_detections_prefix = "detections";
+  loocv_path_trees_prefix = "trees";
+
+  // (maybe use fixed dataset stuff, if a randomly sampled patch should be reused in subsequent trainings)
+  // Store/Load the exact same data set (i.e., same random locations for patches!)
+  store_dataset = 1;
+  load_dataset = 0;
+  fixeddatasetpath = "./bindata/fixed_dataset.txt";
+
+  // the real data paths (use trailing forward slashes)
+  // ######################################################################
+  // DATA PATHS ###########################################################
+  
+  // MICCAI BONE MARROW CELL DETECTION
+  // source image data: 24bit RGB images with png extension are expected
+  // target image data: 8bit grey images with png extension are expected
+  // the number of additional background patches to be sampled from black-positions only
+  // ratio_additional_bg_patches < 0.0, a total of 50% of all non-black target pixels will be extracted at random
+  // ratio_additional_bg_patches >=0.0, a total of x% of all non-black target pixels will be extracted at random
+  ratio_additional_bg_patches = 1.0;
+
+  // experimental dataset
+  path_traindata = "./data/source/train/"; 
+  path_trainlabels = "./data/target/train/"; 
+  path_testdata = "./data/source/test/"; # ignored during LOOCV 
+  path_testlabels = "./data/target/test/"; # ignored during LOOCV
+};
+
+
