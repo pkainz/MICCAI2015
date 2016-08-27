@@ -76,7 +76,7 @@ Forest:
 
   // list of features available to the split function, order is not important
   // FC_GRAY     0 // simple grey-value image (mean of color channels), 1 feature plane
-  // FC_GABOR    1 // gabor filters, ? feature plane
+  // FC_GABOR    1 // gabor filters, 25 feature planes
   // FC_SOBEL    2 // first derivatives, 2 feature planes (x,y)
   // FC_MIN_MAX  3 // minimum/maximum filters, 2 feature planes (min, max)
   // FC_CANNY    4 // canny edges (binary), 1 feature plane
@@ -173,7 +173,7 @@ Data:
 
   path_traindata = "./data/source/train/"; 
   path_trainlabels = "./data/target/train/"; 
-  path_testdata = "./data/source//test/"; 
+  path_testdata = "./data/source/test/"; 
   path_testlabels = "./data/target/test/";
 };
 
