@@ -76,7 +76,7 @@ Forest:
 
   // list of features available to the split function, order is not important
   // FC_GRAY     0 // simple grey-value image (mean of color channels), 1 feature plane
-  // FC_GABOR    1 // gabor filters, ? feature plane
+  // FC_GABOR    1 // gabor filters, 25 feature planes
   // FC_SOBEL    2 // first derivatives, 2 feature planes (x,y)
   // FC_MIN_MAX  3 // minimum/maximum filters, 2 feature planes (min, max)
   // FC_CANNY    4 // canny edges (binary), 1 feature plane
@@ -88,7 +88,7 @@ Forest:
   // FC_ORIENTED_GRAD_CHANFTRS 10 // Binned Oriented Gradients - Channel Features (Dollar, Benenson, ...), 6 feature planes (bins)
   // FC_GRADMAGN 11 // gradient magnitudes, 1 feature plane
   // FC_RGB      12 // RGB channels, 3 feature planes (R,G,B)
-  // FC_RELLOC   13 // relative lo1cation, 2 feature planes (x,y)
+  // FC_RELLOC   13 // relative location, 2 feature planes (x,y)
   image_feature_list = [12,11,9,7,2,8,5];
 
   // use min/max filters 
@@ -133,7 +133,7 @@ Data:
   predictionimgpath = "./bindata/predictions/"; // prediction storage (pure DT predictions, no postprocessing)
 
   // paths to leave-one-out cross validation data
-  use_unique_loocv_path = 0;
+  use_unique_loocv_path = 1;
   path_loocv = "./bindata/";
   loocv_path_predictions_prefix = "predictions";
   loocv_path_detections_prefix = "detections";
