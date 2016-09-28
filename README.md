@@ -10,13 +10,14 @@ Find the description of how to run the code in the `code` and `demo` directories
 
 ## Disclaimer
 **Cell Detection Application Code**: Copyright (c) 2015-2016
-Philipp Kainz, Martin Urschler, Samuel Schulter, Paul Wohlhart, Vincent Lepetit
-Institute of Biophysics, Medical of University Graz, Austria 
-Institute for Computer Graphics and Vision (ICG), Graz University of Technology, Austria
+Philipp Kainz, Martin Urschler, Samuel Schulter, Paul Wohlhart, Vincent Lepetit  
+Institute of Biophysics, Medical of University Graz, Austria.  
+Institute for Computer Graphics and Vision (ICG), Graz University of Technology, Austria.  
+All rights reserved.
 
 **Random Forest Framework Code**: Copyright (c) 2011-2016
-Samuel Schulter, Paul Wohlhart, Christian Leistner, Amir Saffari, Peter M. Roth, Horst Bischof
-Institute for Computer Graphics and Vision (ICG), Graz University of Technology, Austria.
+Samuel Schulter, Paul Wohlhart, Christian Leistner, Amir Saffari, Peter M. Roth, Horst Bischof.  
+Institute for Computer Graphics and Vision (ICG), Graz University of Technology, Austria.  
 All rights reserved.
 
 ## Conditions of use
