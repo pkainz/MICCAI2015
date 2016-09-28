@@ -9,19 +9,19 @@ Download the image data and the ground truth annotations as compressed ZIP [here
 Find the description of how to run the code in the `code` and `demo` directories. 
 
 ## Disclaimer
-**Cell Detection Application Code**: Copyright (c) 2015-2016
+**Cell Detection Application Code**: Copyright (c) 2015-2016  
 Philipp Kainz, Martin Urschler, Samuel Schulter, Paul Wohlhart, Vincent Lepetit  
 Institute of Biophysics, Medical of University Graz, Austria.  
 Institute for Computer Graphics and Vision (ICG), Graz University of Technology, Austria.  
 All rights reserved.
 
-**Random Forest Framework Code**: Copyright (c) 2011-2016
+**Random Forest Framework Code**: Copyright (c) 2011-2016  
 Samuel Schulter, Paul Wohlhart, Christian Leistner, Amir Saffari, Peter M. Roth, Horst Bischof.  
 Institute for Computer Graphics and Vision (ICG), Graz University of Technology, Austria.  
 All rights reserved.
 
 ## Conditions of use
-**Permission to use this code is granted for non-commercial applications only!**
+**Permission to use this code is granted for non-commercial applications only!**  
 P. Kainz, M. Urschler, S. Schulter, P. Wohlhart, and V. Lepetit. **You should use regression to detect cells**. In A. F. Frangi, J. Hornegger, N. Navab, and S. Wells, editors, *Medical Image Computing and Computer-Assisted Intervention – MICCAI 2015*, Lecture Notes in Computer Science, Munich, Germany, Oct. 5-9 2015. Springer. 
 
 ```latex
