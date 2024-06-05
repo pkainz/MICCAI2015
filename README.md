@@ -3,7 +3,7 @@
 Watch the short video on [YouTube](https://www.youtube.com/watch?v=4FhdkiZ51Js) for an overview of the method.
 
 ## Bone Marrow Hematoxylin&Eosin Dataset Download
-Download the image data and the ground truth annotations as compressed ZIP [here](https://cdn.rawgit.com/pkainz/MICCAI2015/master/BM_dataset_MICCAI2015.zip).
+Download the image data and the ground truth annotations as compressed ZIP [here](https://github.com/pkainz/MICCAI2015/raw/master/BM_dataset_MICCAI2015.zip).
 
 ## Code Demo
 Find the description of how to run the code in the `code` and `demo` directories. 
